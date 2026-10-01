@@ -1,0 +1,23 @@
+[Unit]
+Description=Coleta incremental de e-mails a cada cinco minutos
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+User=email-archive
+Group=email-archive
+WorkingDirectory=/opt/email-archive/app
+EnvironmentFile=/etc/email-archive/archive.env
+ExecStart=/opt/email-archive/app/.venv/bin/python -m email_archive.worker
+Restart=on-failure
+RestartSec=30
+TimeoutStopSec=120
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/email-archive
+
+[Install]
+WantedBy=multi-user.target
