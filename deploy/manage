@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if [[ "$EUID" -ne 0 ]]; then
+  echo 'Execute este comando com sudo.'; exit 1
+fi
+# This file is root-owned. Never source an environment file editable by other users.
+set -a
+source /etc/email-archive/archive.env
+set +a
+cd /opt/email-archive/app
+exec runuser -u email-archive -- /opt/email-archive/app/.venv/bin/python -m email_archive.cli "$@"
