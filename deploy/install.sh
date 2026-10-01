@@ -4,8 +4,8 @@ if [[ "$EUID" -ne 0 ]]; then
   echo 'Execute: sudo bash deploy/install.sh'; exit 1
 fi
 source /etc/os-release
-if [[ "${ID:-}" != ubuntu || "${VERSION_ID:-}" != 24.04 ]]; then
-  echo 'Este instalador foi preparado para Ubuntu 24.04.'; exit 1
+if [[ "${ID:-}" != ubuntu || "${VERSION_ID:-}" != 24.04 && "${VERSION_ID:-}" != 26.04 ]]; then
+  echo 'Este instalador foi preparado para Ubuntu 24.04 ou 26.04.'; exit 1
 fi
 checkout_dir="$(cd "$(dirname "$0")/.." && pwd)"
 if [[ "$checkout_dir" != /opt/email-archive/app ]]; then
