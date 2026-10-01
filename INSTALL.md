@@ -1,6 +1,6 @@
-# Instalação no Ubuntu 24.04 / AWS
+# Instalação no Ubuntu 24.04 ou 26.04 / AWS
 
-Esta versão está pronta para um piloto controlado. Os testes locais usam IMAP/S3 simulados; o ambiente real da Locaweb e da AWS precisa ser validado antes de habilitar qualquer exclusão. Não substitua serviços já existentes no servidor.
+Esta versão está pronta para um piloto controlado. As conexões IMAP/S3 dos testes são simuladas; o ambiente real da Locaweb e da AWS precisa ser validado antes de habilitar qualquer exclusão. Não substitua serviços já existentes no servidor.
 
 ## 1. Preparar o servidor
 
