@@ -1,6 +1,6 @@
 # Arquivo corporativo de e-mails
 
-Sistema para arquivar aproximadamente 50 contas Locaweb em um servidor Ubuntu 24.04 na AWS. Painel em português, acessível somente aos administradores.
+Sistema para arquivar aproximadamente 50 contas Locaweb em um servidor Ubuntu 24.04 ou 26.04 na AWS. Painel em português, acessível somente aos administradores.
 
 ## Comportamento
 
