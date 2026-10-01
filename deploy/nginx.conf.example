@@ -1,0 +1,24 @@
+# Substitute domain, certificates and private administrative networks before enabling.
+# This is a dedicated virtual host. Do not replace existing company virtual hosts.
+server {
+    listen 443 ssl;
+    server_name arquivo.example.com;
+    ssl_certificate /etc/letsencrypt/live/arquivo.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/arquivo.example.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    client_max_body_size 64k;
+
+    # Example VPN network: adjust before installation. No unrestricted public access.
+    allow 10.0.0.0/8;
+    deny all;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_read_timeout 180s;
+        # Do not record search terms in access logs.
+        access_log off;
+    }
+}
